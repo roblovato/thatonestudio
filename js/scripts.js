@@ -1,12 +1,46 @@
-// Here's my data model
-var ViewModel = function(first, last) {
-    this.firstName = ko.observable(first);
-    this.lastName = ko.observable(last);
- 
-    this.fullName = ko.computed(function() {
-        // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
-        return this.firstName() + " " + this.lastName();
-    }, this);
-};
- 
-ko.applyBindings(new ViewModel("Planet", "Earth")); // This makes Knockout get to work
+$(document).ready(function(){
+
+	var thatOne = function() {
+		var self = this;
+
+		//UI
+		self.ddMenu = ko.observable(false);
+
+		//FUNCTIONS
+		self.ddMenuDrop = function() {
+			self.ddMenu(self.ddMenu() == false ? true : false);
+		}
+
+	};
+
+	//Custom bindings
+	ko.bindingHandlers.fadeVisible = {
+		init: function(element, valueAccessor) {
+			var value = valueAccessor();
+			$(element).toggle(ko.utils.unwrapObservable(value));
+		},
+		update: function(element, valueAccessor, allBindings) {
+			var value = valueAccessor(),
+			duration = allBindings.get('fadeDuration') || 300;
+			ko.utils.unwrapObservable(value) ? $(element).fadeIn(duration) : $(element).fadeOut(duration);
+		}
+	};
+
+	ko.bindingHandlers.slideVisible = {
+		update: function(element, valueAccessor, allBindings) {
+			var value = valueAccessor(),
+			valueUnwrapped = ko.utils.unwrapObservable(value),
+			duration = allBindings.get('slideDuration') || 300;
+
+		if (valueUnwrapped == true)
+			$(element).slideDown(duration);
+		else
+			$(element).slideUp(duration);
+		}
+	};
+
+	ko.applyBindings(new thatOne());
+
+	window.app_thatOne = new thatOne();
+
+});
