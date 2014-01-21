@@ -13,6 +13,7 @@
 	<link rel="stylesheet/less" href="css/styles.less" type="text/css" />
 </head>
 <body>
+	<!-- <button style="position:absolute; top:100px; left:100px; z-index:99999;" data-bind="click: videoScale">Test</button> -->
 	<header>
 		<div class="container">
 			<a href="#" id="logo">
@@ -36,15 +37,22 @@
 		</div>
 	</header>
 	<div id="feature" class="container">
-		<iframe width="853" height="480" src="http://www.youtube.com/embed/nT8HqkC2GVc" frameborder="0" allowfullscreen></iframe>
+		<div id="video_wrap">
+			<iframe width="" height="" src="//www.youtube.com/embed/nT8HqkC2GVc?rel=0" frameborder="0" allowfullscreen></iframe>
+		</div>
 	</div> <!-- /#feature-->
 	<div id="latest" class="container">
 		<h2>Latest Work</h2>
-		<div id="carousel">
-			<div><button><img src="images/temp_thumb.jpg" /></button></div>
-			<div><button><img src="images/temp_thumb.jpg" /></button></div>
-			<div><button><img src="images/temp_thumb.jpg" /></button></div>
+		<div id="carousel" data-bind="foreach: videos">
+			<div><button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
+				<img data-bind="attr: {src: img}" src="" />
+				<span></span>
+				<em data-bind="text: title"></em>
+			</button></div>
 		</div>
+		<!-- ko if: openModal -->
+			<!-- ko template: {name: 'modal_window'} --> <!-- /ko -->
+		<!-- /ko -->
 	</div> <!-- /#latest-->
 	<div id="columns" class="container">
 		<div>
@@ -75,6 +83,19 @@
 			</div>
 		</div>
 	</footer>
+
+	<script type="text/html" id="modal_window">
+		<div id="overlay" data-bind="click: function() {openModal(false)}"></div>
+		<div id="modal">
+			<button id="close" data-bind="click: function() {openModal(false)}"></a>
+			<div id="modal_content">
+				<h2 data-bind="text: currentTitle"></h2>
+				<iframe data-bind="attr: {src: currentVideo}" width="" height="" src="" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</script>
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script src="js/ko.js"></script>
 	<script src="js/scripts.js"></script>
