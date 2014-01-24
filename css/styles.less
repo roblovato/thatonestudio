@@ -142,6 +142,7 @@ header {
 				background: #fff;
 				border: @border;
 				border-bottom: none;
+				z-index: 99999;
 
 				li {
 					width: 110px;
@@ -300,7 +301,6 @@ footer {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: url(images/overlay.png);
 	background: rgba(0, 0, 0, .7);
 	z-index: 20000;
 }
@@ -318,8 +318,15 @@ footer {
 		font-size: 14px;
 		color: #000;
 
+		iframe {
+			width: 853px;
+			height: 480px;
+		}
+
 		h2 {
 			margin-bottom: 10px;
+			padding-bottom: 0;
+			border-bottom: none;
 			color: #000;
 			font-size: 30px;
 		}
@@ -329,7 +336,8 @@ footer {
 		display: block;
 		width: 42px;
 		height: 42px;
-		background: red;
+		background: url(../images/modal_close.png) 0 0 no-repeat;
+		border: none;
 		position: absolute;
 		right: -20px;
 		top: -18px;
@@ -382,6 +390,15 @@ footer {
 		}
 	}
 
+	#modal {
+		#modal_content {
+			iframe {
+				width: 600px;
+				height: 337px;
+			}
+		}
+	}
+
 }
 
 /*-------------------------------------- MOBILE --------------------------------------*/
@@ -417,16 +434,38 @@ footer {
 
 			li {
 				width: 100%;
+				height: auto;
 				padding: 5px 0;
 				border-bottom: @border;
 				text-align: center;
 				line-height: 30px;
+
+				&.hasmenu {}
 
 				em {display: none;}
 
 				button {
 					width: 100%;
 					font-size: 18px;
+				}
+
+				ul {
+					width: auto;
+					position: relative;
+					top: auto;
+					left: auto;
+					margin-left: 0;
+					margin-bottom: -7px !important;
+					background: #efefef;
+
+					li {
+						height: 20px;
+						width: 100%;
+						border-bottom: 1px solid #fff;
+						background: #efefef;
+						line-height: 20px;
+						font-size: 12px;
+					}
 				}
 			}
 		}
@@ -448,6 +487,15 @@ footer {
 			width: auto;
 			margin: 0 0 30px 0;
 			padding: 0 20px;
+		}
+	}
+
+	#modal {
+		#modal_content {
+			iframe {
+				width: 250px;
+				height: 140px;
+			}
 		}
 	}
 

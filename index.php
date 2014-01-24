@@ -22,7 +22,7 @@
 			<nav>
 				<ul>
 					<li><button class="plain">ABOUT</button><em></em></li>
-					<li>
+					<li class="hasmenu">
 						<button class="plain" data-bind="click: ddMenuDrop">PORTFOLIO</button>
 						<em></em>
 						<ul data-bind="slideVisible: ddMenu, slideDuration: 200">
@@ -37,7 +37,7 @@
 		</div>
 	</header>
 	<div id="feature" class="container">
-		<div id="video_wrap">
+		<div class="video_wrap">
 			<iframe width="" height="" src="//www.youtube.com/embed/nT8HqkC2GVc?rel=0" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div> <!-- /#feature-->
@@ -87,7 +87,7 @@
 	<script type="text/html" id="modal_window">
 		<div id="overlay" data-bind="click: function() {openModal(false)}"></div>
 		<div id="modal">
-			<button id="close" data-bind="click: function() {openModal(false)}"></a>
+			<button id="close" data-bind="click: function() {openModal(false)}"></button>
 			<div id="modal_content">
 				<h2 data-bind="text: currentTitle"></h2>
 				<iframe data-bind="attr: {src: currentVideo}" width="" height="" src="" frameborder="0" allowfullscreen></iframe>
