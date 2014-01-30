@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var thatOne = function() {
+	function thatOneVM() {
 		var self = this;
 
 		//UI
@@ -8,6 +8,8 @@ $(document).ready(function(){
 		self.openModal = ko.observable(false);
 		self.currentVideo = ko.observable('');
 		self.currentTitle = ko.observable('');
+
+		self.editableVideo = ko.observable(new Video());
 
 		//FUNCTIONS
 		self.init = function() {
@@ -47,23 +49,66 @@ $(document).ready(function(){
 				id: "01",
 				title: "Sircut Lean",
 				img: "images/temp_thumb.jpg",
-				video: "//www.youtube.com/embed/xS_L4YfBAg4?rel=0"
+				video: "//www.youtube.com/embed/xS_L4YfBAg4?rel=0",
+				category: "latest"
 			},
 			{
 				id: "02",
 				title: "Sean & Nicole",
 				img: "images/thumb_sean_nicole.jpg",
-				video: "//www.youtube.com/embed/GnMPoanxBwo?rel=0"
+				video: "//www.youtube.com/embed/GnMPoanxBwo?rel=0",
+				category: "latest"
 			},
 			{
 				id: "03",
 				title: "Twisted Candy",
 				img: "images/thumb_twisted_candy.jpg",
-				video: "//www.youtube.com/embed/Ik79Plxj2j0?rel=0"
+				video: "//www.youtube.com/embed/Ik79Plxj2j0?rel=0",
+				category: "latest"
 			},
 		]);
 
+		self.getVideos = function(){
+			$.post('/api/get_videos', function(data){
+				if(data && data.success){
+					$.each(data.videos, function(i,v){
+						// self.videos.push(v);
+						//populate the page here;
+					});
+				} else {
+					//fuck no, this isn't optional
+				}
+			},'json');
+		};
+
 	};
+
+	function Video(vid) {
+		var self = this;
+
+		if (typeof vid === 'undefined') {
+		    vid = {};
+		}
+
+		self.id = ko.observable(vid.id || -1);
+		self.title = ko.observable(vid.title || '');
+		self.img = ko.observable(vid.img || '');
+		self.video = ko.observable(vid.video || '');
+		self.category = ko.observable(vid.category || '');
+
+		//UI
+		// self.catSelect = ko.observable(false);
+
+		self.toJS = function() {
+			return {
+				id: self.id(),
+				title: self.title(),
+				img: self.img(),
+				video: self.video(),
+				category: self.category()
+			};
+		};
+	}
 
 	//Custom bindings
 	ko.bindingHandlers.fadeVisible = {
@@ -97,9 +142,9 @@ $(document).ready(function(){
 	$(document).on('mouseleave','.hasmenu',function(){ $(this).parent().find('ul').stop(true, false).slideUp(100);
 	});
 
-	ko.applyBindings(new thatOne());
+	ko.applyBindings(new thatOneVM());
 
-	window.app_thatOne = new thatOne();
+	window.app_thatOne = new thatOneVM();
 
 	$(window).resize(function(){
 		app_thatOne.videoScale();

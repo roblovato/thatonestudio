@@ -176,7 +176,10 @@ header {
 
 		> div {
 			display: inline-block;
-			margin: 0 20px;
+			margin: 0 10px;
+
+			&.first {margin-left: 0;}
+			&.last {margin-right: 0;}
 
 			> button {
 				position: relative;
@@ -219,7 +222,7 @@ header {
 					.transitionAll(.3s);
 				}
 
-				img {width: 230px;}
+				img {width: 300px;}
 			}
 		}
 	}
@@ -356,6 +359,20 @@ footer {
 		padding: 0 20px;
 	}
 
+	#latest {
+		#carousel {
+			> div {
+				width: 30%;
+
+				> button {
+					width: 100%;
+
+					img {width: 100%;}
+				}
+			}
+		}
+	}
+
 	#columns {
 
 		> div {
@@ -476,8 +493,15 @@ footer {
 
 		#carousel {
 			> div {
+				width: 100%;
 				display: inline-block;
-				margin: 0 20px 20px 20px;
+				margin: 0 0 20px 0;
+
+				> button {
+					width: 100%;
+
+					img {width: 100%;}
+				}
 			}
 		}
 	}

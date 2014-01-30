@@ -44,11 +44,13 @@
 	<div id="latest" class="container">
 		<h2>Latest Work</h2>
 		<div id="carousel" data-bind="foreach: videos">
-			<div><button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
-				<img data-bind="attr: {src: img}" src="" />
-				<span></span>
-				<em data-bind="text: title"></em>
-			</button></div>
+			<div data-bind="css: {first: ($index() == 0), last: ($parent.videos().length -1) == $index()}">
+				<button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
+					<img data-bind="attr: {src: img}" src="" />
+					<span></span>
+					<em data-bind="text: title"></em>
+				</button>
+			</div>
 		</div>
 		<!-- ko if: openModal -->
 			<!-- ko template: {name: 'modal_window'} --> <!-- /ko -->
