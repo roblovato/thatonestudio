@@ -13,63 +13,136 @@
 	<link rel="stylesheet/less" href="css/styles.less" type="text/css" />
 </head>
 <body>
-	<!-- <button style="position:absolute; top:100px; left:100px; z-index:99999;" data-bind="click: videoScale">Test</button> -->
+<!-- <button style="position:fixed; top:100px; left:100px; z-index:99999;" data-bind="click: test">Test</button> -->
 	<header>
 		<div class="container">
-			<a href="#" id="logo">
+			<a href="#" id="logo" data-bind="click: function(){ nav('home') }">
 				<img src="images/logo.gif" />
 			</a>
 			<nav>
 				<ul>
-					<li><button class="plain">ABOUT</button><em></em></li>
+					<li><button class="plain" data-bind="click: function(){ nav('about') }">ABOUT</button><em data-bind="css: {active: navThrottle() == 'about'"></em></li>
 					<li class="hasmenu">
 						<button class="plain" data-bind="click: ddMenuDrop">PORTFOLIO</button>
-						<em></em>
+						<em data-bind="css: {active: navThrottle() == 'weddings' || nav() == 'multimedia'"></em>
 						<ul data-bind="slideVisible: ddMenu, slideDuration: 200">
-							<li><button class="plain">Weddings</button></li>
-							<li><button class="plain">Multimedia</button></li>
+							<li><button class="plain" data-bind="click: function(){ nav('weddings') }">Weddings</button></li>
+							<li><button class="plain" data-bind="click: function(){ nav('multimedia') }">Multimedia</button></li>
 						</ul>
 					</li>
-					<li><button class="plain">PRODUCTION</button><em></em></li>
-					<li><button class="plain">CONTACT</button><em></em></li>
+					<li><button class="plain" data-bind="click: function(){ nav('production') }">PRODUCTION</button><em data-bind="css: {active: navThrottle() == 'production'"></em></li>
+					<li><button class="plain" data-bind="click: function(){ nav('contact') }">CONTACT</button><em data-bind="css: {active: navThrottle() == 'contact'"></em></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
-	<div id="feature" class="container">
-		<div class="video_wrap">
-			<iframe width="" height="" src="//www.youtube.com/embed/nT8HqkC2GVc?rel=0" frameborder="0" allowfullscreen></iframe>
-		</div>
-	</div> <!-- /#feature-->
-	<div id="latest" class="container">
-		<h2>Latest Work</h2>
-		<div id="carousel" data-bind="foreach: videos">
-			<div data-bind="css: {first: ($index() == 0), last: ($parent.videos().length -1) == $index()}">
-				<button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
-					<img data-bind="attr: {src: img}" src="" />
-					<span></span>
-					<em data-bind="text: title"></em>
-				</button>
-			</div>
-		</div>
-		<!-- ko if: openModal -->
-			<!-- ko template: {name: 'modal_window'} --> <!-- /ko -->
+	<div id="page_wrap">
+
+		<!-- ko if: currentPage() == 'home' -->
+			<!-- ko template: {name: 'home_template'} --> <!-- /ko -->
 		<!-- /ko -->
-	</div> <!-- /#latest-->
-	<div id="columns" class="container">
-		<div>
-			<h2>Who We Are</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
+		<!-- ko if: currentPage() == 'about' -->
+			<!-- ko template: {name: 'about_template'} --> <!-- /ko -->
+		<!-- /ko -->
+		<!-- ko if: currentPage() == 'weddings' -->
+			<!-- ko template: {name: 'weddings_template'} --> <!-- /ko -->
+		<!-- /ko -->
+		<!-- ko if: currentPage() == 'multimedia' -->
+			<!-- ko template: {name: 'multimedia_template'} --> <!-- /ko -->
+		<!-- /ko -->
+		<!-- ko if: currentPage() == 'production' -->
+			<!-- ko template: {name: 'production_template'} --> <!-- /ko -->
+		<!-- /ko -->
+		<!-- ko if: currentPage() == 'contact' -->
+			<!-- ko template: {name: 'contact_template'} --> <!-- /ko -->
+		<!-- /ko -->
+
+		<script type="text/html" id="about_template">
+			<div id="about" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+				<h1>About</h1>
+				<div style="text-align:center;margin-bottom:40px;">
+					<img src="http://nikongear.com/live/uploads/monthly_08_2012/post-345-0-39851200-1345723568.jpg" width="800" />
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="weddings_template">
+			<div id="weddings" class="container box" data-bind="css: {moveright: getOutDaWay}">
+				<h1>Weddings</h1>
+				<div style="text-align:center;margin-bottom:40px;">
+					<img src="http://www.dphotographer.co.uk/users/8417/thm1024/moonlitstartrails.jpg" width="800" />
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="multimedia_template">
+			<div id="multimedia" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+				<h1>Multimedia</h1>
+				<div style="text-align:center;margin-bottom:40px;">
+					<img src="http://liquidinplastic.com/wp-content/uploads/2008/06/tahoetoned.jpg" width="800" />
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="production_template">
+			<div id="production" class="container box" data-bind="css: {moveright: getOutDaWay}">
+				<h1>Production</h1>
+				<div style="text-align:center;margin-bottom:40px;">
+					<img src="http://www.mobygames.com/images/shots/l/367045-star-wars-galaxies-trials-of-obi-wan-windows-screenshot-landing.jpg" width="800" />
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="contact_template">
+			<div id="contact" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+				<h1>Contact</h1>
+				<div style="text-align:center;margin-bottom:40px;">
+					<img src="http://nikongear.com/live/uploads/monthly_08_2012/post-345-0-13488500-1345723298.jpg" width="800" />
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="home_template">
+			<div id="feature" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+				<div class="video_wrap">
+					<iframe width="" height="" src="//www.youtube.com/embed/nT8HqkC2GVc?rel=0" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div> <!-- /#feature-->
+			<div id="latest" class="container box" data-bind="css: {moveright: getOutDaWay}">
+				<h2>Latest Work</h2>
+				<div id="carousel" data-bind="foreach: videos">
+					<div data-bind="css: {first: ($index() == 0), last: ($parent.videos().length -1) == $index()}">
+						<button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
+							<img data-bind="attr: {src: img}" src="" />
+							<span></span>
+							<em data-bind="text: title"></em>
+						</button>
+					</div>
+				</div>
+				<!-- ko if: openModal -->
+					<!-- ko template: {name: 'modal_window'} --> <!-- /ko -->
+				<!-- /ko -->
+			</div> <!-- /#latest-->
+			<div id="columns" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+				<div>
+					<h2>Who We Are</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
+				</div>
+				<div>
+					<h2>Video Production</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
+				</div>
+				<div class="nrm">
+					<h2>Equipment</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
+				</div>
+			</div> <!-- /#columns-->
+		</script>
+
+		<div id="page_overlay" data-bind="fadeVisible: pageLoading, fadeDuration: 500">
+			<img src="images/loader.gif" width="200" height="50" />
 		</div>
-		<div>
-			<h2>Video Production</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
-		</div>
-		<div class="nrm">
-			<h2>Equipment</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
-		</div>
-	</div> <!-- /#columns-->
+	</div>
 	<footer>
 		<div class="container">
 			<div id="copyright">

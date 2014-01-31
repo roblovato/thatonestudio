@@ -64,6 +64,12 @@ h1, h2, h3 {
 	font-weight: normal;
 }
 
+h1 {
+	font-size: 38px;
+	text-align: center;
+	.SourceSansLight;
+}
+
 h2 {
 	border-bottom: @border;
 	margin-bottom: 20px;
@@ -78,10 +84,23 @@ ul {
 	list-style: none;
 }
 
+#page_wrap {
+	position: relative;
+}
+
 .container {
 	width: 978px;
 	margin: 0 auto;
 	.clearfix;
+
+	&.moveleft {left: -100%;}
+	&.moveright {left: 100%;}
+}
+
+.box {
+	position: relative;
+	left: 0;
+	.transitionAll(1s);
 }
 
 header {
@@ -128,6 +147,8 @@ header {
 				background: @purple;
 				opacity: 0;
 				.transitionAll(.2s);
+
+				&.active {opacity: 1;}
 			}
 
 			&:hover em {opacity: 1;}
@@ -231,6 +252,8 @@ header {
 #columns {
 	margin-bottom: 60px;
 
+	&.move {left: 100%;}
+
 	> div {
 		width: 306px;
 		float: left;
@@ -296,9 +319,15 @@ footer {
 	}
 }
 
+/*===================== MULTIMEDIA =====================*/
+
+#multimedia {
+	text-align: center;
+}
+
 /*===================== MODAL WINDOW =====================*/
 
-#overlay {
+#overlay, #page_overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -306,6 +335,18 @@ footer {
 	height: 100%;
 	background: rgba(0, 0, 0, .7);
 	z-index: 20000;
+}
+
+#page_overlay {
+	position: absolute;
+	background: #fff;
+
+	img {
+		position: absolute;
+		top: 250px;
+		left: 50%;
+		margin-left: -100px;
+	}
 }
 
 #modal {

@@ -8,6 +8,9 @@ $(document).ready(function(){
 		self.openModal = ko.observable(false);
 		self.currentVideo = ko.observable('');
 		self.currentTitle = ko.observable('');
+		self.currentPage = ko.observable('home');
+		self.getOutDaWay = ko.observable(false);
+		self.pageLoading = ko.observable(false);
 
 		self.editableVideo = ko.observable(new Video());
 
@@ -40,9 +43,18 @@ $(document).ready(function(){
 			// console.log(x);
 		};
 
-		self.test = function(x) {
-			// console.log('fuckershit');
-		}
+		self.nav = function(page) {
+			self.pageLoading(true);
+			self.getOutDaWay(self.getOutDaWay() == false ? true : false);
+			setTimeout(function(){
+				self.currentPage(page);
+				self.getOutDaWay(self.getOutDaWay() == false ? true : false);
+				self.pageLoading(false);
+				if (page == 'home') {
+					self.videoScale();
+				}
+			}, 1000);
+		};
 
 		self.videos = ko.observableArray([
 			{
