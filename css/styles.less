@@ -85,9 +85,7 @@ ul {
 }
 
 #page_wrap {
-	margin: 40px 0;
 	position: relative;
-	overflow: hidden;
 }
 
 .container {
@@ -107,6 +105,7 @@ ul {
 
 header {
 	height: 120px;
+	margin-bottom: 30px;
 	border-bottom: @border;
 	box-shadow: 0 5px 20px #e5e5e5;
 	.clearfix;
@@ -188,6 +187,8 @@ header {
 #feature {
 	text-align: center;
 	margin-bottom: 60px;
+
+	.video_wrap {width: 100%;}
 }
 
 #latest {
@@ -197,6 +198,7 @@ header {
 		text-align: center;
 
 		> div {
+			position: relative;
 			display: inline-block;
 			margin: 0 10px;
 
@@ -211,6 +213,8 @@ header {
 				background: none;
 				border: 5px solid #fff;
 				box-shadow: 0 0 20px #e5e5e5;
+
+				&.edit {border-color: red;}
 
 				&:hover {
 					cursor: pointer;
@@ -245,6 +249,22 @@ header {
 				}
 
 				img {width: 300px;}
+			}
+
+			.edit_options {
+				width: 230px;
+				padding: 20px;
+				position: absolute;
+				top: 20px;
+				left: 50%;
+				margin-left: -135px;
+				background: #fff;
+				box-shadow: 0 0 10px #000;
+				text-align: left;
+
+				.button_row {
+					margin-bottom: 10px;
+				}
 			}
 		}
 	}

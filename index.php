@@ -13,7 +13,8 @@
 	<link rel="stylesheet/less" href="css/styles.less" type="text/css" />
 </head>
 <body>
-<!-- <button style="position:fixed; top:100px; left:100px; z-index:99999;" data-bind="click: test">Test</button> -->
+<div id="main">
+<button style="position:fixed; top:100px; left:100px; z-index:99999;" data-bind="click: editToggle">Edit Mode</button>
 	<header>
 		<div class="container">
 			<a href="#" id="logo" data-bind="click: function(){ nav('home') }">
@@ -78,6 +79,17 @@
 		<script type="text/html" id="multimedia_template">
 			<div id="multimedia" class="container box" data-bind="css: {moveleft: getOutDaWay}">
 				<h1>Multimedia</h1>
+				<div class="" data-bind="foreach: videos">
+					<!-- ko if: category == 'multimedia' -->
+						<div data-bind="css: {first: ($index() == 0), last: ($parent.videos().length -1) == $index()}">
+							<button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
+								<img data-bind="attr: {src: img}" src="" />
+								<span></span>
+								<em data-bind="text: title"></em>
+							</button>
+						</div>
+					<!-- /ko -->
+				</div>
 				<div style="text-align:center;margin-bottom:40px;">
 					<img src="http://liquidinplastic.com/wp-content/uploads/2008/06/tahoetoned.jpg" width="800" />
 				</div>
@@ -105,18 +117,21 @@
 		<script type="text/html" id="home_template">
 			<div id="feature" class="container box" data-bind="css: {moveleft: getOutDaWay}">
 				<div class="video_wrap">
-					<iframe width="" height="" src="//www.youtube.com/embed/nT8HqkC2GVc?rel=0" frameborder="0" allowfullscreen></iframe>
+					<iframe id="featured_video" width="" height="" src="//www.youtube.com/embed/nT8HqkC2GVc?rel=0" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div> <!-- /#feature-->
 			<div id="latest" class="container box" data-bind="css: {moveright: getOutDaWay}">
 				<h2>Latest Work</h2>
 				<div id="carousel" data-bind="foreach: videos">
 					<div data-bind="css: {first: ($index() == 0), last: ($parent.videos().length -1) == $index()}">
-						<button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
+						<button data-bind="css: {edit: $parent.editMode}, click: $root.thumbAction, attr: {id: id}">
 							<img data-bind="attr: {src: img}" src="" />
 							<span></span>
 							<em data-bind="text: title"></em>
 						</button>
+						<!-- ko if: showEditOptions -->
+							<!-- ko template: {name: 'thumb_edit'} --> <!-- /ko -->
+						<!-- /ko -->
 					</div>
 				</div>
 				<!-- ko if: openModal -->
@@ -159,6 +174,37 @@
 		</div>
 	</footer>
 
+	<script type="text/html" id="thumb_edit">
+		<div class="edit_options" data-bind="">
+			<div class="button_row">
+				<button>New</button>
+				<button>Edit</button>
+				<button disabled>Save</button>
+				<button>Delete</button>
+				<button data-bind="click: function() { showEditOptions(false) }">X</button>
+			</div>
+			<div class="iwrap">
+				<label for="v_title">Title</label>
+				<input id="v_title" type="text" data-bind="value: title" />
+			</div>
+			<div class="iwrap">
+				<label for="v_video">Video</label>
+				<input id="v_video" type="text" />
+			</div>
+			<div class="iwrap">
+				<label for="v_category">Category</label>
+				<select id="v_category">
+					<option>Weddings</option>
+					<option>Multimedia</option>
+				</select>
+			</div>
+			<div class="iwrap">
+				<label for="v_featured">Featured</label>
+				<input type="checkbox" />
+			</div>
+		</div>
+	</script>
+
 	<script type="text/html" id="modal_window">
 		<div id="overlay" data-bind="click: function() {openModal(false)}"></div>
 		<div id="modal">
@@ -178,5 +224,6 @@
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+</div>
 </body>
 </html>

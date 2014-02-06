@@ -11,8 +11,8 @@ switch($action){
 				"video"=>"//www.youtube.com/embed/xS_L4YfBAg4?rel=0",
 				"category"=>"latest");
          $vids[] = array("id"=>"02",
-				"title"=>"Sircut Lean",
-				"img"=>"images/temp_thumb.jpg",
+				"title"=>"Twisted Candy",
+				"img"=>"images/thumb_twisted_candy.jpg",
 				"video"=>"//www.youtube.com/embed/xS_L4YfBAg4?rel=0",
 				"category"=>"latest");
          

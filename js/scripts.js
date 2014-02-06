@@ -11,13 +11,19 @@ $(document).ready(function(){
 		self.currentPage = ko.observable('home');
 		self.getOutDaWay = ko.observable(false);
 		self.pageLoading = ko.observable(false);
+		self.editMode = ko.observable(false);
 
-		self.editableVideo = ko.observable(new Video());
+		self.videos = ko.observableArray();
 
 		//FUNCTIONS
 		self.init = function() {
+			self.render();
+			self.getVideos();
 			self.videoScale();
-                        self.getVideos();
+		};
+
+		this.render = function(){
+			ko.applyBindings(self, document.getElementById('main') );
 		};
 
 		self.ddMenuDrop = function() {
@@ -29,8 +35,7 @@ $(document).ready(function(){
 				value = (mainWidth);
 				value *= 1,
 				valueHeight = Math.round((value/16)*9);
-			$('.video_wrap').children('iframe').addClass('video');
-			$('.video').attr('width', value).attr('height', valueHeight);
+			$('#featured_video').attr('width', value).attr('height', valueHeight);
 		};
 
 		self.modal = function(t, v) {
@@ -41,7 +46,6 @@ $(document).ready(function(){
 				left = ($('#modal').outerWidth() / 2);
 			
 			$('#modal').css({'margin-top' : '-'+top+'px', 'margin-left' : '-'+left+'px'});
-			// console.log(x);
 		};
 
 		self.nav = function(page) {
@@ -57,54 +61,35 @@ $(document).ready(function(){
 			}, 1000);
 		};
 
-		self.videos1 = ko.observableArray([
-			{
-				id: "01",
-				title: "Sircut Lean",
-				img: "images/temp_thumb.jpg",
-				video: "//www.youtube.com/embed/xS_L4YfBAg4?rel=0",
-				category: "latest"
-			},
-			{
-				id: "02",
-				title: "Sean & Nicole",
-				img: "images/thumb_sean_nicole.jpg",
-				video: "//www.youtube.com/embed/GnMPoanxBwo?rel=0",
-				category: "latest"
-			},
-			{
-				id: "03",
-				title: "Twisted Candy",
-				img: "images/thumb_twisted_candy.jpg",
-				video: "//www.youtube.com/embed/Ik79Plxj2j0?rel=0",
-				category: "latest"
-			},
-		]);
-                
-                self.videos = ko.observableArray();
-                
 		self.getVideos = function(){
-			$.post('/controller/videos.php',{"action":"get_featured"}, function(data){
+			$.post('controller/videos.php',{"action":"get_featured"}, function(data){
 				if(data && data.success){
-                               
-                                    //console.log(data.videos);
 					$.each(data.videos, function(i,v){
-                                            //console.log(v.category);
-                                           //self.videos.push(new Video(v));
-                                           
-                                            self.videos.push(v);
-                                            //console.log(self.videos);
-					//populate the page here;
+						self.videos.push(new Video(v));
 					});
-                                       // console.log(self.videos());
 				} else {
 					//fuck no, this isn't optional
 				}
-                                //ko.applyBindings(self,document.getElementById('carousel'));
-                                //ko.applyBindings(new thatOneVM());
 			},'json');
 		};
 
+		self.thumbAction = function(thumb) {
+			var t = thumb.title(),
+				v = thumb.video();
+			if (!self.editMode()) {
+				self.modal(t, v);
+			} else {
+				self.editThumb(thumb);
+			}
+		};
+
+		self.editThumb = function(thumb) {
+			thumb.showEditOptions(true);
+		};
+
+		self.editToggle = function() {
+			self.editMode(self.editMode() == true ? false : true);
+		};
 	};
 
 	function Video(vid) {
@@ -121,6 +106,7 @@ $(document).ready(function(){
 		self.category = ko.observable(vid.category || '');
 
 		//UI
+		self.showEditOptions = ko.observable(false);
 		// self.catSelect = ko.observable(false);
 
 		self.toJS = function() {
@@ -165,8 +151,6 @@ $(document).ready(function(){
 
 	$(document).on('mouseleave','.hasmenu',function(){ $(this).parent().find('ul').stop(true, false).slideUp(100);
 	});
-
-	ko.applyBindings(new thatOneVM(self.videos));
 
 	window.app_thatOne = new thatOneVM();
 
