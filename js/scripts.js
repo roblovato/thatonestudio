@@ -17,6 +17,7 @@ $(document).ready(function(){
 		//FUNCTIONS
 		self.init = function() {
 			self.videoScale();
+                        self.getVideos();
 		};
 
 		self.ddMenuDrop = function() {
@@ -56,7 +57,7 @@ $(document).ready(function(){
 			}, 1000);
 		};
 
-		self.videos = ko.observableArray([
+		self.videos1 = ko.observableArray([
 			{
 				id: "01",
 				title: "Sircut Lean",
@@ -79,17 +80,28 @@ $(document).ready(function(){
 				category: "latest"
 			},
 		]);
-
+                
+                self.videos = ko.observableArray();
+                
 		self.getVideos = function(){
-			$.post('/api/get_videos', function(data){
+			$.post('/controller/videos.php',{"action":"get_featured"}, function(data){
 				if(data && data.success){
+                               
+                                    //console.log(data.videos);
 					$.each(data.videos, function(i,v){
-						// self.videos.push(v);
-						//populate the page here;
+                                            //console.log(v.category);
+                                           //self.videos.push(new Video(v));
+                                           
+                                            self.videos.push(v);
+                                            //console.log(self.videos);
+					//populate the page here;
 					});
+                                       // console.log(self.videos());
 				} else {
 					//fuck no, this isn't optional
 				}
+                                //ko.applyBindings(self,document.getElementById('carousel'));
+                                //ko.applyBindings(new thatOneVM());
 			},'json');
 		};
 
@@ -154,7 +166,7 @@ $(document).ready(function(){
 	$(document).on('mouseleave','.hasmenu',function(){ $(this).parent().find('ul').stop(true, false).slideUp(100);
 	});
 
-	ko.applyBindings(new thatOneVM());
+	ko.applyBindings(new thatOneVM(self.videos));
 
 	window.app_thatOne = new thatOneVM();
 
