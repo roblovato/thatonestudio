@@ -122,6 +122,11 @@
 			</div> <!-- /#feature-->
 			<div id="latest" class="container box" data-bind="css: {moveright: getOutDaWay}">
 				<h2>Latest Work</h2>
+				<!-- ko if: editMode -->
+					<div id="add_video"> 
+						<button data-bind="click: addNewVideo">New</button>
+					</div>
+				<!-- /ko -->
 				<div id="carousel" data-bind="foreach: videos">
 					<div data-bind="css: {first: ($index() == 0), last: ($parent.videos().length -1) == $index()}">
 						<button data-bind="css: {edit: $parent.editMode}, click: $root.thumbAction, attr: {id: id}">
@@ -129,11 +134,11 @@
 							<span></span>
 							<em data-bind="text: title"></em>
 						</button>
-						<!-- ko if: showEditOptions -->
-							<!-- ko template: {name: 'thumb_edit'} --> <!-- /ko -->
-						<!-- /ko -->
 					</div>
 				</div>
+				<!-- ko if: showEditOptions -->
+					<!-- ko template: {name: 'thumb_edit'} --> <!-- /ko -->
+				<!-- /ko -->
 				<!-- ko if: openModal -->
 					<!-- ko template: {name: 'modal_window'} --> <!-- /ko -->
 				<!-- /ko -->
@@ -175,38 +180,40 @@
 	</footer>
 
 	<script type="text/html" id="thumb_edit">
-		<div class="edit_options" data-bind="">
+		<div class="overlay" data-bind=""></div>
+		<div class="edit_options" data-bind="with: editableVideo">
 			<div class="button_row">
-				<button>New</button>
-				<button>Edit</button>
-				<button disabled>Save</button>
-				<button>Delete</button>
-				<button data-bind="click: function() { showEditOptions(false) }">X</button>
+				<button data-bind="click: function() { $parent.setVideoEditable(true) }, disable: editable">Edit</button>
+				<button data-bind="click: $parent.editVideoDone, disable: !editable()">Save</button>
+				<button data-bind="click: $parent.deleteVideo, visible: !$parent.isNew()">Delete</button>
+				<button data-bind="click: $parent.cancelEdit">X</button>
 			</div>
 			<div class="iwrap">
 				<label for="v_title">Title</label>
-				<input id="v_title" type="text" data-bind="value: title" />
+				<input id="v_title" type="text" data-bind="value: title, disable: !editable()"/>
 			</div>
-			<div class="iwrap">
-				<label for="v_video">Video</label>
-				<input id="v_video" type="text" />
-			</div>
+			<!-- ko if: editable -->
+				<div class="iwrap">
+					<label for="v_video">Video</label>
+					<input id="v_video" type="text" data-bind="value: video" />
+				</div>
+			<!-- /ko -->
 			<div class="iwrap">
 				<label for="v_category">Category</label>
-				<select id="v_category">
+				<select id="v_category" data-bind="disable: !editable(), value: category">
 					<option>Weddings</option>
 					<option>Multimedia</option>
 				</select>
 			</div>
 			<div class="iwrap">
 				<label for="v_featured">Featured</label>
-				<input type="checkbox" />
+				<input type="checkbox" data-bind="disable: !editable()" />
 			</div>
 		</div>
 	</script>
 
 	<script type="text/html" id="modal_window">
-		<div id="overlay" data-bind="click: function() {openModal(false)}"></div>
+		<div class="overlay" data-bind="click: function() {openModal(false)}"></div>
 		<div id="modal">
 			<button id="close" data-bind="click: function() {openModal(false)}"></button>
 			<div id="modal_content">
