@@ -250,22 +250,6 @@ header {
 
 				img {width: 300px;}
 			}
-
-			.edit_options {
-				width: 230px;
-				padding: 20px;
-				position: absolute;
-				top: 20px;
-				left: 50%;
-				margin-left: -135px;
-				background: #fff;
-				box-shadow: 0 0 10px #000;
-				text-align: left;
-
-				.button_row {
-					margin-bottom: 10px;
-				}
-			}
 		}
 	}
 }
@@ -348,7 +332,7 @@ footer {
 
 /*===================== MODAL WINDOW =====================*/
 
-#overlay, #page_overlay {
+.overlay, #page_overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -411,6 +395,42 @@ footer {
 }
 
 .modal_content {display: none;}
+
+.edit_options {
+	width: 230px;
+	padding: 20px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -135px;
+	margin-top: -85px;
+	background: #fff;
+	box-shadow: 0 0 10px #000;
+	text-align: left;
+	z-index: 30000;
+
+	.button_row {
+		margin-bottom: 10px;
+	}
+
+	.iwrap {
+		margin-bottom: 10px;
+
+		label {
+			display: inline-block;
+			width: 75px;
+		}
+
+		input[type="text"] {
+			width: 125px;
+			font-size: 14px;
+
+			&:disabled {
+				border: 2px solid transparent;
+			}
+		}
+	}
+}
 
 /*-------------------------------------- TABLETS --------------------------------------*/
 
