@@ -11,9 +11,13 @@ $(document).ready(function(){
 		self.currentPage = ko.observable('home');
 		self.getOutDaWay = ko.observable(false);
 		self.pageLoading = ko.observable(false);
+
+		self.showEditOptions = ko.observable(false);
 		self.editMode = ko.observable(false);
+		self.isNew = ko.observable(false);
 
 		self.videos = ko.observableArray();
+		self.editableVideo = ko.observable(new Video());
 
 		//FUNCTIONS
 		self.init = function() {
@@ -61,7 +65,22 @@ $(document).ready(function(){
 			}, 1000);
 		};
 
-		self.getVideos = function(){
+		self.editVideoDone = function() {
+			if (self.isNew() == true) {
+				self.addVideo();
+			} else {
+				self.saveVideo();
+			}
+		};
+
+		self.addNewVideo = function() {
+			self.isNew(true);
+			self.editableVideo(new Video());
+			self.showEditOptions(true);
+			self.setVideoEditable(true);
+		};
+
+		self.getVideos = function() {
 			$.post('controller/videos.php',{"action":"get_featured"}, function(data){
 				if(data && data.success){
 					$.each(data.videos, function(i,v){
@@ -73,18 +92,78 @@ $(document).ready(function(){
 			},'json');
 		};
 
+		self.addVideo = function() {
+			// $.post('controller/videos.php',{"action":"add_video"},
+			// 	self.editableVideo().toJS(),
+			// 	function(data){
+			// 		if(data && data.success){
+			// 			self.showEditOptions(false);
+			// 		} else {
+			// 			//no dice chino
+			// 		}
+			// 	},
+			// 	'json'
+			// );
+			console.log('add');
+		};
+
+		self.saveVideo = function() {
+			// $.post('controller/videos.php',{"action":"save_video"},
+			// 	self.editableVideo().toJS(),
+			// 	function(data){
+			// 		if(data && data.success){
+			// 			self.showEditOptions(false);
+			// 		} else {
+			// 			//no dice chino
+			// 		}
+			// 	},
+			// 	'json'
+			// );
+			console.log('save');
+		};
+
+		self.deleteVideo = function() {
+			// $.post('controller/videos.php',{"action":"delete_video"},
+			// 	{ id: self.editableVideo().id()},
+			// 	function(data){
+			// 		if(data && data.success){
+			// 			self.showEditOptions(false);
+			// 		} else {
+			// 			//no dice chino
+			// 		}
+			// 	},
+			// 	'json'
+			// );
+			console.log('delete');
+		};
+
+		self.cancelEdit = function() {
+			if(self.isNew() == false) {
+				if (self.editableVideo().editable() == true) {
+					self.setVideoEditable(false);
+				} else {
+					self.showEditOptions(false);
+				}
+			} else {
+				self.isNew(false);
+				self.showEditOptions(false);
+				self.setVideoEditable(false);
+			}
+		};
+
+		self.setVideoEditable = function(val){
+			self.editableVideo().editable(val);
+		};
+
 		self.thumbAction = function(thumb) {
 			var t = thumb.title(),
 				v = thumb.video();
 			if (!self.editMode()) {
 				self.modal(t, v);
 			} else {
-				self.editThumb(thumb);
+				self.editableVideo(thumb);
+				self.showEditOptions(true);
 			}
-		};
-
-		self.editThumb = function(thumb) {
-			thumb.showEditOptions(true);
 		};
 
 		self.editToggle = function() {
@@ -104,9 +183,11 @@ $(document).ready(function(){
 		self.img = ko.observable(vid.img || '');
 		self.video = ko.observable(vid.video || '');
 		self.category = ko.observable(vid.category || '');
+		self.sub_category = ko.observable(vid.sub_category || '');
+		self.featured = ko.observable(vid.featured || '');
 
 		//UI
-		self.showEditOptions = ko.observable(false);
+		self.editable = ko.observable(false);
 		// self.catSelect = ko.observable(false);
 
 		self.toJS = function() {
@@ -115,7 +196,9 @@ $(document).ready(function(){
 				title: self.title(),
 				img: self.img(),
 				video: self.video(),
-				category: self.category()
+				category: self.category(),
+				sub_category: self.sub_category(),
+				featured: self.featured()
 			};
 		};
 	}
