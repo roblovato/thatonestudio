@@ -9,20 +9,24 @@ switch($action){
 				"title"=>"Sircut Lean",
 				"img"=>"images/temp_thumb.jpg",
 				"video"=>"//www.youtube.com/embed/xS_L4YfBAg4?rel=0",
-				"category"=>"latest");
+				"category"=>"weddings",
+                "sub_category"=>"",
+                "featured"=>"true");
          $vids[] = array("id"=>"02",
 				"title"=>"Twisted Candy",
 				"img"=>"images/thumb_twisted_candy.jpg",
 				"video"=>"//www.youtube.com/embed/xS_L4YfBAg4?rel=0",
-				"category"=>"latest");
+				"category"=>"latest",
+                "sub_category"=>"",
+                "featured"=>"false");
          
         print json_encode(array("videos"=>$vids,"success"=>true));
         break;
-    case "save_video":
+    case "add_video":
         break;
     case "delete_video":
         break;
-    case "update_video":
+    case "save_video":
         break;
     
 }
