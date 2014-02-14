@@ -180,8 +180,13 @@ $(document).ready(function(){
 
 		self.id = ko.observable(vid.id || -1);
 		self.title = ko.observable(vid.title || '');
-		self.img = ko.observable(vid.img || '');
-		self.video = ko.observable(vid.video || '');
+		self.video_id = ko.observable(vid.video_id || '');
+		self.img = ko.computed(function() {
+			return 'http://img.youtube.com/vi/' + self.video_id() + '/0.jpg';
+		});
+		self.video = ko.computed(function() {
+			return '//www.youtube.com/embed/' + self.video_id() + '?rel=0';
+		});
 		self.category = ko.observable(vid.category || '');
 		self.sub_category = ko.observable(vid.sub_category || '');
 		self.featured = ko.observable(vid.featured || '');
@@ -194,8 +199,7 @@ $(document).ready(function(){
 			return {
 				id: self.id(),
 				title: self.title(),
-				img: self.img(),
-				video: self.video(),
+				video_id: self.video_id(),
 				category: self.category(),
 				sub_category: self.sub_category(),
 				featured: self.featured()

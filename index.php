@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id="main">
-<button style="position:fixed; top:100px; left:100px; z-index:99999;" data-bind="click: editToggle">Edit Mode</button>
+<!-- <button style="position:fixed; top:100px; left:100px; z-index:99999;" data-bind="click: editToggle">Edit Mode</button> -->
 	<header>
 		<div class="container">
 			<a href="#" id="logo" data-bind="click: function(){ nav('home') }">
@@ -79,20 +79,34 @@
 		<script type="text/html" id="multimedia_template">
 			<div id="multimedia" class="container box" data-bind="css: {moveleft: getOutDaWay}">
 				<h1>Multimedia</h1>
-				<div class="" data-bind="foreach: videos">
-					<!-- ko if: category == 'multimedia' -->
-						<div data-bind="css: {first: ($index() == 0), last: ($parent.videos().length -1) == $index()}">
-							<button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
-								<img data-bind="attr: {src: img}" src="" />
-								<span></span>
-								<em data-bind="text: title"></em>
-							</button>
-						</div>
+				<h2>Music Videos</h2>
+				<div class="grid" data-bind="foreach: videos">
+					<!-- ko if: sub_category() == 'music_videos' -->
+						<!-- ko template: {name: 'grid_item_template'} --> <!-- /ko -->
 					<!-- /ko -->
 				</div>
-				<div style="text-align:center;margin-bottom:40px;">
-					<img src="http://liquidinplastic.com/wp-content/uploads/2008/06/tahoetoned.jpg" width="800" />
+				<h2>Commercial/Promo Videos</h2>
+				<div class="grid" data-bind="foreach: videos">
+					<!-- ko if: sub_category() == 'commercial_promo' -->
+						<!-- ko template: {name: 'grid_item_template'} --> <!-- /ko -->
+					<!-- /ko -->
 				</div>
+				<h2>Trailer/Teaser Videos</h2>
+				<div class="grid" data-bind="foreach: videos">
+					<!-- ko if: sub_category() == 'trailer_teaser' -->
+						<!-- ko template: {name: 'grid_item_template'} --> <!-- /ko -->
+					<!-- /ko -->
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="grid_item_template">
+			<div class="sub">
+				<button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
+					<img data-bind="attr: {src: img}" src="" />
+					<span></span>
+					<em data-bind="text: title"></em>
+				</button>
 			</div>
 		</script>
 
@@ -127,14 +141,16 @@
 						<button data-bind="click: addNewVideo">New</button>
 					</div>
 				<!-- /ko -->
-				<div id="carousel" data-bind="foreach: videos">
-					<div data-bind="css: {first: ($index() == 0), last: ($parent.videos().length -1) == $index()}">
-						<button data-bind="css: {edit: $parent.editMode}, click: $root.thumbAction, attr: {id: id}">
-							<img data-bind="attr: {src: img}" src="" />
-							<span></span>
-							<em data-bind="text: title"></em>
-						</button>
-					</div>
+				<div class="grid" data-bind="foreach: videos">
+					<!-- ko if: category() == 'latest' -->
+						<div data-bind="css: {first: ($index() == 0), last: ($index() == 2)}">
+							<button data-bind="css: {edit: $parent.editMode}, click: $root.thumbAction, attr: {id: id}">
+								<img data-bind="attr: {src: img}" src="" />
+								<span></span>
+								<em data-bind="text: title"></em>
+							</button>
+						</div>
+					<!-- /ko -->
 				</div>
 				<!-- ko if: showEditOptions -->
 					<!-- ko template: {name: 'thumb_edit'} --> <!-- /ko -->
