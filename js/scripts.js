@@ -9,7 +9,7 @@ $(document).ready(function(){
 		self.currentVideo = ko.observable('');
 		self.currentTitle = ko.observable('');
 		self.currentPage = ko.observable('home');
-		self.getOutDaWay = ko.observable(false);
+		self.beGone = ko.observable(false);
 		self.pageLoading = ko.observable(false);
 
 		self.showEditOptions = ko.observable(false);
@@ -54,10 +54,10 @@ $(document).ready(function(){
 
 		self.nav = function(page) {
 			self.pageLoading(true);
-			self.getOutDaWay(self.getOutDaWay() == false ? true : false);
+			self.beGone(self.beGone() == false ? true : false);
 			setTimeout(function(){
 				self.currentPage(page);
-				self.getOutDaWay(self.getOutDaWay() == false ? true : false);
+				self.beGone(self.beGone() == false ? true : false);
 				self.pageLoading(false);
 				if (page == 'home') {
 					self.videoScale();
@@ -181,11 +181,25 @@ $(document).ready(function(){
 		self.id = ko.observable(vid.id || -1);
 		self.title = ko.observable(vid.title || '');
 		self.video_id = ko.observable(vid.video_id || '');
+		self.video_type = ko.observable(vid.video_type || '');
 		self.img = ko.computed(function() {
-			return 'http://img.youtube.com/vi/' + self.video_id() + '/0.jpg';
+			if (self.video_type() == 'yt') {
+				return 'http://img.youtube.com/vi/' + self.video_id() + '/mqdefault.jpg';
+			} else if (self.video_type() == 'vimeo') {
+				$.getJSON('http://www.vimeo.com/api/v2/video/' + self.video_id() + '.json?callback=?', {format: "json"}, function(data) {
+					self.img_vimeo(data[0].thumbnail_large);
+				});
+			}
 		});
+		self.img_vimeo = ko.observable(vid.img_vimeo || '');
 		self.video = ko.computed(function() {
-			return '//www.youtube.com/embed/' + self.video_id() + '?rel=0';
+			if (self.video_type() == 'yt') {
+				// console.log('youtube');
+				return '//www.youtube.com/embed/' + self.video_id() + '?rel=0';
+			} else if (self.video_type() == 'vimeo') {
+				// console.log('viemo');
+				return '//player.vimeo.com/video/' + self.video_id() + '?byline=0';
+			}
 		});
 		self.category = ko.observable(vid.category || '');
 		self.sub_category = ko.observable(vid.sub_category || '');
@@ -200,6 +214,7 @@ $(document).ready(function(){
 				id: self.id(),
 				title: self.title(),
 				video_id: self.video_id(),
+				video_type: self.video_type(),
 				category: self.category(),
 				sub_category: self.sub_category(),
 				featured: self.featured()

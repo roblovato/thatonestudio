@@ -59,25 +59,38 @@
 		<!-- /ko -->
 
 		<script type="text/html" id="about_template">
-			<div id="about" class="container box" data-bind="css: {moveleft: getOutDaWay}">
-				<h1>About</h1>
-				<div style="text-align:center;margin-bottom:40px;">
-					<img src="http://nikongear.com/live/uploads/monthly_08_2012/post-345-0-39851200-1345723568.jpg" width="800" />
-				</div>
+			<div id="about" class="container box" data-bind="css: {moveleft: beGone}">
+				<h1>About Us</h1>
+				<h2>Who is in "That ONE Studio"?</h2>
+				<p>Carlos Munguia of Imma~Mex Productions and Xander Burgos of Project Splash Entertainment have teamed up to bring up one of the most talked about and diverse production companies out there today. Bringing the knowledge and experience from both labels, they have truly started a buzz in the Multimedia field. The Diversity they bring in the fields of videography and filmmaking has given them a step up from their competitors. Coming from an Art School background, they creatively pour their passion into each and every project they work on. Never afraid to try new things and tackle new types of fields, they constantly strive on bringing their unique style of visualization to go above and beyond, ensuring their customers satisfaction!</p>
+				<h2>What do you guys do?</h2>
+				<p>We make films. Plan, shoot, edit and finalize all the way down to the finished product be it digital and/or hard copy. We love making films both as a hobby and as our work.<br />
+					In the end, I guess you can call us Filmmakers.</p>
+				<h2>When did you begin?</h2>
+				<p>Though we've been filming for years on our own, That ONE Studio began in October 2011. Since then, we've been filming weddings, short narrative pieces, music videos, and various other projects.</p>
+				<h2>Where are you guys based?</h2>
+				<p>We are based out of the Bay Area and serve it with a smile! And laughter!</p>
+				<h2>Why do you guys do this</h2>
+				<p>Love & Passion.<br />
+					Film was the type of work we were always willing to lose sleep over, all to bring joy and excitement to whoever was waiting for the video.</p>
 			</div>
 		</script>
 
 		<script type="text/html" id="weddings_template">
-			<div id="weddings" class="container box" data-bind="css: {moveright: getOutDaWay}">
+			<div id="weddings" class="container box" data-bind="css: {moveright: beGone}">
 				<h1>Weddings</h1>
-				<div style="text-align:center;margin-bottom:40px;">
-					<img src="http://www.dphotographer.co.uk/users/8417/thm1024/moonlitstartrails.jpg" width="800" />
+				<div class="grid" data-bind="foreach: videos">
+					<!-- ko if: category() == 'weddings' -->
+						<!-- ko template: {name: 'grid_item_template'} --> <!-- /ko -->
+					<!-- /ko -->
 				</div>
+				<h2>Packages</h2>
+				<p>That ONE Studio strives to work alongside our customers so that we can accommodate you anyway we can. We offer a variety of choices to choose from like our <strong>"Highlight Featurette"</strong> package to our <strong>"Movie DVD Special"</strong> Package. We understand finances are always fragile when it comes to wedding planning, so we want to ensure you that our prices are very competitive and especially affordable! We are more dedicated about sharing the moment with you than taking it from you; because at the end of the day, it’s more about making your memories last instead of worrying about what could have been.</p>
 			</div>
 		</script>
 
 		<script type="text/html" id="multimedia_template">
-			<div id="multimedia" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+			<div id="multimedia" class="container box" data-bind="css: {moveleft: beGone}">
 				<h1>Multimedia</h1>
 				<h2>Music Videos</h2>
 				<div class="grid" data-bind="foreach: videos">
@@ -97,13 +110,24 @@
 						<!-- ko template: {name: 'grid_item_template'} --> <!-- /ko -->
 					<!-- /ko -->
 				</div>
+				<h2>Short Films/Documentaries</h2>
+				<div class="grid" data-bind="foreach: videos">
+					<!-- ko if: sub_category() == 'short_docu' -->
+						<!-- ko template: {name: 'grid_item_template'} --> <!-- /ko -->
+					<!-- /ko -->
+				</div>
 			</div>
 		</script>
 
 		<script type="text/html" id="grid_item_template">
 			<div class="sub">
-				<button data-bind="click: function() {$parent.modal(title, video)}, attr: {id: id}">
-					<img data-bind="attr: {src: img}" src="" />
+				<button data-bind="click: $root.thumbAction, attr: {id: id}">
+					<!-- ko if: video_type() == 'yt' -->
+						<img data-bind="attr: {src: img}" src="" />
+					<!-- /ko -->
+					<!-- ko if: video_type() == 'vimeo' -->
+						<img data-bind="attr: {src: img_vimeo}" src="" />
+					<!-- /ko -->
 					<span></span>
 					<em data-bind="text: title"></em>
 				</button>
@@ -111,30 +135,82 @@
 		</script>
 
 		<script type="text/html" id="production_template">
-			<div id="production" class="container box" data-bind="css: {moveright: getOutDaWay}">
+			<div id="production" class="container box" data-bind="css: {moveright: beGone}">
 				<h1>Production</h1>
-				<div style="text-align:center;margin-bottom:40px;">
-					<img src="http://www.mobygames.com/images/shots/l/367045-star-wars-galaxies-trials-of-obi-wan-windows-screenshot-landing.jpg" width="800" />
-				</div>
+				<section>
+					<h2>Hair and Make-Up Artists</h2>
+					<div class="columns">
+						<div>
+							<h3>Chayenne Mallari</h3>
+							<p>
+								Web: <a href="http://bellezzacristalis.com/danville" target="_blank">bellezzacristalis.com/danville</a><br />
+								Email: <a href="mailto:chayennem@gmail.com">chayennem@gmail.com</a>
+							</p>
+						</div>
+						<div>
+							<h3>Tara Vineyard</h3>
+							<p>
+								Email: <a href="mailto:t.vineyard12@gmail.com">t.vineyard12@gmail.com</a>
+							</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Photographers</h2>
+					<div class="columns">
+						<div>
+							<h3>Nicole Paulson</h3>
+							<p>
+								Web: <a href="http://Nicolepaulson.com" target="_blank">Nicolepaulson.com</a><br />
+							</p>
+						</div>
+						<div>
+							<h3>Lex Tamayo</h3>
+							<p>
+								Web: <a href="http://Prolificimage.com" target="_blank">Prolificimage.com</a><br />
+								Email: <a href="mailto:Lextamayo@gmail.com">Lextamayo@gmail.com</a>
+							</p>
+						</div>
+						<div class="nrm">
+							<h3>Tai La</h3>
+							<p>
+								Web: <a href="http://www.facebook.com/pages/Tai-La-Photography/131889886839294" target="_blank">www.facebook.com/pages/Tai-La-Photography/131889886839294</a><br />
+								Email: <a href="mailto:Photogtaila@gmail.com">Photogtaila@gmail.com</a>
+							</p>
+						</div>
+					</div>
+				</section>
 			</div>
 		</script>
 
 		<script type="text/html" id="contact_template">
-			<div id="contact" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+			<div id="contact" class="container box" data-bind="css: {moveleft: beGone}">
 				<h1>Contact</h1>
-				<div style="text-align:center;margin-bottom:40px;">
-					<img src="http://nikongear.com/live/uploads/monthly_08_2012/post-345-0-13488500-1345723298.jpg" width="800" />
+				<div>
+					<form id="contact_form" name="contact_form">
+						<h2>Book Us While Were Still Available!</h2>
+						<label>First</label><br/> <input type="text" name="first_name" id="first_name"><br/>
+						<label>Last Name</label><br/> <input type="text" name="last_name" id="last_name"><br/>
+						<label>Email</label><br/> <input type="text" name="email" id="email"><br/>
+						<label>Phone</label><br/> <input type="text" name="phone" id="phone"><br/>
+						<label>Comment</label><br/>
+						<textarea name="comment" id="comment"></textarea>
+						<br/><br/>
+						<input type="hidden" name="action" value="submit_contact">
+						<!-- <div id="Qaptcha" style="margin-left:150px;width:230px;background:#fff;border:solid 1px #fff;"></div> -->
+						<input type="submit" name="submit" value="Submit">
+					</form>
 				</div>
 			</div>
 		</script>
 
 		<script type="text/html" id="home_template">
-			<div id="feature" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+			<div id="feature" class="container box" data-bind="css: {moveleft: beGone}">
 				<div class="video_wrap">
 					<iframe id="featured_video" width="" height="" src="//www.youtube.com/embed/nT8HqkC2GVc?rel=0" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div> <!-- /#feature-->
-			<div id="latest" class="container box" data-bind="css: {moveright: getOutDaWay}">
+			<div id="latest" class="container box" data-bind="css: {moveright: beGone}">
 				<h2>Latest Work</h2>
 				<!-- ko if: editMode -->
 					<div id="add_video"> 
@@ -142,8 +218,8 @@
 					</div>
 				<!-- /ko -->
 				<div class="grid" data-bind="foreach: videos">
-					<!-- ko if: category() == 'latest' -->
-						<div data-bind="css: {first: ($index() == 0), last: ($index() == 2)}">
+					<!-- ko if: featured() == 'true' -->
+						<div>
 							<button data-bind="css: {edit: $parent.editMode}, click: $root.thumbAction, attr: {id: id}">
 								<img data-bind="attr: {src: img}" src="" />
 								<span></span>
@@ -152,28 +228,28 @@
 						</div>
 					<!-- /ko -->
 				</div>
-				<!-- ko if: showEditOptions -->
-					<!-- ko template: {name: 'thumb_edit'} --> <!-- /ko -->
-				<!-- /ko -->
-				<!-- ko if: openModal -->
-					<!-- ko template: {name: 'modal_window'} --> <!-- /ko -->
-				<!-- /ko -->
 			</div> <!-- /#latest-->
-			<div id="columns" class="container box" data-bind="css: {moveleft: getOutDaWay}">
+			<div class="columns container box" data-bind="css: {moveleft: beGone}">
 				<div>
 					<h2>Who We Are</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
+					<p>Here at That ONE Studio, we not only want to make an impression on our clients but also our community. Starting this year, every video that we produce, we will donate a portion of the proceeds to a local charity on behave of our customers and the T.O.S. family.</p>
 				</div>
 				<div>
 					<h2>Video Production</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
+					<p>Because we strive on working with others, this year we will be providing for our clients the opportunity to shoot future videos on the ever-so popular, RED "Epic" film camera.</p>
 				</div>
 				<div class="nrm">
 					<h2>Equipment</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit sapien velit, vel tempor purus fermentum ac. Quisque ac nisl sit amet urna varius tristique. Aliquam eget sapien eget leo ornare vulputate gravida sed dolor. Pellentesque et facilisis</p>
+					<p>We offer everything and anything that you may need to shoot a video. Lights, audio equipment, HD cameras, etc., so there is nothing that we don’t have or can’t provide for you.</p>
 				</div>
 			</div> <!-- /#columns-->
 		</script>
+		<!-- ko if: showEditOptions -->
+			<!-- ko template: {name: 'thumb_edit'} --> <!-- /ko -->
+		<!-- /ko -->
+		<!-- ko if: openModal -->
+			<!-- ko template: {name: 'modal_window'} --> <!-- /ko -->
+		<!-- /ko -->
 
 		<div id="page_overlay" data-bind="fadeVisible: pageLoading, fadeDuration: 500">
 			<img src="images/loader.gif" width="200" height="50" />

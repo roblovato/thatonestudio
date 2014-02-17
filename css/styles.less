@@ -78,6 +78,13 @@ h2 {
 	.SourceSansLight;
 }
 
+h3 {
+	font-size: 18px;
+	.SourceSansLight;
+}
+
+p {line-height: 25px;}
+
 ul {
 	padding: 0;
 	margin: 0;
@@ -201,11 +208,9 @@ header {
 	> div {
 		position: relative;
 		display: inline-block;
-		margin: 0 10px;
+		margin: 0 5px;
 
-		&.first {margin-left: 0;}
-		&.last {margin-right: 0;}
-		&.sub {margin: 0 5px 20px 5px;}
+		&.sub {margin-bottom: 20px;}
 
 		> button {
 			position: relative;
@@ -255,7 +260,7 @@ header {
 	}
 }
 
-#columns {
+.columns {
 	margin-bottom: 60px;
 
 	&.move {left: 100%;}
@@ -266,10 +271,6 @@ header {
 		margin-right: 30px;
 
 		&.nrm {.nrm;}
-
-		p {
-			line-height: 25px;
-		}
 	}
 }
 
@@ -330,6 +331,28 @@ footer {
 #multimedia {
 	text-align: center;
 	margin-bottom: 60px;
+}
+
+/*===================== WEDDINGS =====================*/
+
+#weddings {
+	.grid {margin-bottom: 60px;}
+	p {margin-bottom: 60px;}
+}
+
+/*===================== ABOUT =====================*/
+
+#about {
+	p {margin-bottom: 60px;}
+}
+
+/*===================== PRODUCTION =====================*/
+
+#production {
+	section {
+		margin-bottom: 60px;
+		.clearfix;
+	}
 }
 
 /*===================== MODAL WINDOW =====================*/
@@ -455,7 +478,7 @@ footer {
 		}
 	}
 
-	#columns {
+	.columns {
 
 		> div {
 			width: 30%;
@@ -588,7 +611,7 @@ footer {
 		}
 	}
 
-	#columns {
+	.columns {
 		> div {
 			width: auto;
 			margin: 0 0 30px 0;
