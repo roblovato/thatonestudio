@@ -62,7 +62,7 @@
 			<div id="about" class="container box" data-bind="css: {moveleft: beGone}">
 				<h1>About Us</h1>
 				<h2>Who is in "That ONE Studio"?</h2>
-				<p>Carlos Munguia of Imma~Mex Productions and Xander Burgos of Project Splash Entertainment have teamed up to bring up one of the most talked about and diverse production companies out there today. Bringing the knowledge and experience from both labels, they have truly started a buzz in the Multimedia field. The Diversity they bring in the fields of videography and filmmaking has given them a step up from their competitors. Coming from an Art School background, they creatively pour their passion into each and every project they work on. Never afraid to try new things and tackle new types of fields, they constantly strive on bringing their unique style of visualization to go above and beyond, ensuring their customers satisfaction!</p>
+				<p>Carlos Munguia, Founder and CEO has recruited some of the best, up and coming talent in the Bay Area to be one of the most talked about and diverse production companies out there today. Bringing the knowledge and experience with his team, they have truly started a buzz in the Multimedia field. The Diversity they bring in the fields of videography and filmmaking has given them a step up from their competitors. Coming from Art School backgrounds, they creatively pour their passion into each and every project they work on. Never afraid to try new things and tackle new types of fields, they constantly strive on bringing their unique style of visualization to go above and beyond, ensuring their customers satisfaction!</p>
 				<h2>What do you guys do?</h2>
 				<p>We make films. Plan, shoot, edit and finalize all the way down to the finished product be it digital and/or hard copy. We love making films both as a hobby and as our work.<br />
 					In the end, I guess you can call us Filmmakers.</p>
@@ -189,16 +189,32 @@
 				<div>
 					<form id="contact_form" name="contact_form">
 						<h2>Book Us While Were Still Available!</h2>
-						<label>First</label><br/> <input type="text" name="first_name" id="first_name"><br/>
-						<label>Last Name</label><br/> <input type="text" name="last_name" id="last_name"><br/>
-						<label>Email</label><br/> <input type="text" name="email" id="email"><br/>
-						<label>Phone</label><br/> <input type="text" name="phone" id="phone"><br/>
-						<label>Comment</label><br/>
-						<textarea name="comment" id="comment"></textarea>
-						<br/><br/>
-						<input type="hidden" name="action" value="submit_contact">
-						<!-- <div id="Qaptcha" style="margin-left:150px;width:230px;background:#fff;border:solid 1px #fff;"></div> -->
-						<input type="submit" name="submit" value="Submit">
+						<div id="contact_left">
+							<div class="iwrap">
+								<label>First</label>
+								<input type="text" name="first_name" id="first_name">
+							</div>
+							<div class="iwrap">
+								<label>Last Name</label>
+								<input type="text" name="last_name" id="last_name">
+							</div>
+							<div class="iwrap">
+								<label>Email</label>
+								<input type="text" name="email" id="email">
+							</div>
+							<div class="iwrap">
+								<label>Phone</label>
+								<input type="text" name="phone" id="phone">
+							</div>
+						</div>
+						<div id="contact_right">
+							<div class="iwrap">
+								<label>Comment</label>
+								<textarea name="comment" id="comment"></textarea>
+							</div>
+							<input type="hidden" name="action" value="submit_contact">
+							<input type="submit" name="submit" value="Submit">
+						</div>
 					</form>
 				</div>
 			</div>
@@ -207,7 +223,7 @@
 		<script type="text/html" id="home_template">
 			<div id="feature" class="container box" data-bind="css: {moveleft: beGone}">
 				<div class="video_wrap">
-					<iframe id="featured_video" width="" height="" src="//www.youtube.com/embed/nT8HqkC2GVc?rel=0" frameborder="0" allowfullscreen></iframe>
+					<iframe id="featured_video" width="" height="" src="//player.vimeo.com/video/82867245" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div> <!-- /#feature-->
 			<div id="latest" class="container box" data-bind="css: {moveright: beGone}">

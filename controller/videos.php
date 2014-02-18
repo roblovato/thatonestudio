@@ -5,6 +5,13 @@ $action = $_POST['action'];
 switch($action){
     
     case "get_featured":
+        $vids[] = array("id"=>"01",
+                "title"=>"Kanary Diamonds - \"Like Me\"",
+                "video_id"=>"kA4T_zl0evE",
+                "video_type"=>"yt",
+                "category"=>"multimedia",
+                "sub_category"=>"music_videos",
+                "featured"=>"false");
         $vids[] = array("id"=>"02",
                 "title"=>"‪Sircut - SMILE music video",
                 "video_id"=>"35556101",
@@ -13,15 +20,15 @@ switch($action){
                 "sub_category"=>"music_videos",
                 "featured"=>"false");
         $vids[] = array("id"=>"03",
-                "title"=>"‪G-SpOt - LAY IT DOWN",
+                "title"=>"‪G-SpOt - LAY IT DOWN music video",
                 "video_id"=>"opTnH5schL4",
                 "video_type"=>"yt",
                 "category"=>"multimedia",
                 "sub_category"=>"music_videos",
-                "featured"=>"true");
+                "featured"=>"false");
         $vids[] = array("id"=>"04",
-                "title"=>"\"‪Fresh\" Music Video (Metro P. feat. Dorrough)",
-                "video_id"=>"xS_L4YfBAg4",
+                "title"=>"Kadeve - \"Fly Away\"",
+                "video_id"=>"bpz_p49fKLw",
                 "video_type"=>"yt",
                 "category"=>"multimedia",
                 "sub_category"=>"music_videos",
@@ -32,7 +39,7 @@ switch($action){
                 "video_type"=>"yt",
                 "category"=>"multimedia",
                 "sub_category"=>"music_videos",
-                "featured"=>"true");
+                "featured"=>"false");
         $vids[] = array("id"=>"06",
                 "title"=>"‪Sircut - LOOKING THRU MY PHONE music video",
                 "video_id"=>"mDlhvriM_mE",
@@ -41,12 +48,12 @@ switch($action){
                 "sub_category"=>"music_videos",
                 "featured"=>"false");
         $vids[] = array("id"=>"07",
-                "title"=>"‪Train - Drive By",
-                "video_id"=>"oxqnFJ3lp5k",
+                "title"=>"‪Bok Fu Do (Extended) Promo",
+                "video_id"=>"95Tve6QDyjs",
                 "video_type"=>"yt",
                 "category"=>"multimedia",
-                "sub_category"=>"music_videos",
-                "featured"=>"false");
+                "sub_category"=>"commercial_promo",
+                "featured"=>"true");
         $vids[] = array("id"=>"08",
                 "title"=>"‪2012 NYE Party at Blackhawk Museum",
                 "video_id"=>"K-E0GRpd7rI",
@@ -191,6 +198,34 @@ switch($action){
                 "title"=>"‪Jon & Michelle Highlight",
                 "video_id"=>"yufNFTu5jDQ",
                 "video_type"=>"yt",
+                "category"=>"weddings",
+                "sub_category"=>"",
+                "featured"=>"false");
+        $vids[] = array("id"=>"29",
+                "title"=>"‪Kara & Kenny",
+                "video_id"=>"73735452",
+                "video_type"=>"vimeo",
+                "category"=>"weddings",
+                "sub_category"=>"",
+                "featured"=>"false");
+        $vids[] = array("id"=>"30",
+                "title"=>"Amy & Matt",
+                "video_id"=>"77363575",
+                "video_type"=>"vimeo",
+                "category"=>"weddings",
+                "sub_category"=>"",
+                "featured"=>"true");
+        $vids[] = array("id"=>"31",
+                "title"=>"‪Katie & Rich",
+                "video_id"=>"82867245",
+                "video_type"=>"vimeo",
+                "category"=>"weddings",
+                "sub_category"=>"",
+                "featured"=>"false");
+        $vids[] = array("id"=>"32",
+                "title"=>"‪Sean & April",
+                "video_id"=>"82323989",
+                "video_type"=>"vimeo",
                 "category"=>"weddings",
                 "sub_category"=>"",
                 "featured"=>"false");

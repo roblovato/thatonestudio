@@ -194,10 +194,8 @@ $(document).ready(function(){
 		self.img_vimeo = ko.observable(vid.img_vimeo || '');
 		self.video = ko.computed(function() {
 			if (self.video_type() == 'yt') {
-				// console.log('youtube');
 				return '//www.youtube.com/embed/' + self.video_id() + '?rel=0';
 			} else if (self.video_type() == 'vimeo') {
-				// console.log('viemo');
 				return '//player.vimeo.com/video/' + self.video_id() + '?byline=0';
 			}
 		});
