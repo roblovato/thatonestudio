@@ -61,18 +61,18 @@
 		<script type="text/html" id="about_template">
 			<div id="about" class="container box" data-bind="css: {moveleft: beGone}">
 				<h1>About Us</h1>
-				<h2>Who is in "That ONE Studio"?</h2>
-				<p>Carlos Munguia, Founder and CEO has recruited some of the best, up and coming talent in the Bay Area to be one of the most talked about and diverse production companies out there today. Bringing the knowledge and experience with his team, they have truly started a buzz in the Multimedia field. The Diversity they bring in the fields of videography and filmmaking has given them a step up from their competitors. Coming from Art School backgrounds, they creatively pour their passion into each and every project they work on. Never afraid to try new things and tackle new types of fields, they constantly strive on bringing their unique style of visualization to go above and beyond, ensuring their customers satisfaction!</p>
-				<h2>What do you guys do?</h2>
-				<p>We make films. Plan, shoot, edit and finalize all the way down to the finished product be it digital and/or hard copy. We love making films both as a hobby and as our work.<br />
-					In the end, I guess you can call us Filmmakers.</p>
-				<h2>When did you begin?</h2>
+				<h2>Who is "That ONE Studio"?</h2>
+				<p>Carlos Munguia, Founder and CEO, has recruited some of the best up and coming talents in the Bay Area to be one of the most talked about and diverse production company out there today. With his team they bring the knowledge and experience they have that has truly started a buzz in the multimedia field. The diversity they bring in the fields of videography and filmmaking has given them a step up from their competitors. Coming from art school backgrounds they're constantly and creatively pouring their passions into each and every projects they work on. The team is never afraid to try new things and tackle new types of fields. They constantly strive on bringing their unique style of visualization to go above and beyond, ensuring their client's satisfaction!</p>
+				<h2>What does T.O.S. do?</h2>
+				<p>We make films! Plan, shoot, edit and finalize all the way down to the finished product be it digital and/or hard copy. We love making films both as a hobby and as our work.<br />
+					In the end, I guess you can call us filmmakers.</p>
+				<h2>When did we begin?</h2>
 				<p>Though we've been filming for years on our own, That ONE Studio began in October 2011. Since then, we've been filming weddings, short narrative pieces, music videos, and various other projects.</p>
-				<h2>Where are you guys based?</h2>
+				<h2>Where are we based?</h2>
 				<p>We are based out of the Bay Area and serve it with a smile! And laughter!</p>
-				<h2>Why do you guys do this</h2>
+				<h2>Why do we do this</h2>
 				<p>Love & Passion.<br />
-					Film was the type of work we were always willing to lose sleep over, all to bring joy and excitement to whoever was waiting for the video.</p>
+					Film is the type of work we are always willing to lose sleep over, all to bring joy and excitement to whomever was waiting for the video.</p>
 			</div>
 		</script>
 
@@ -252,7 +252,7 @@
 				</div>
 				<div>
 					<h2>Video Production</h2>
-					<p>Because we strive on working with others, this year we will be providing for our clients the opportunity to shoot future videos on the ever-so popular, RED "Epic" film camera.</p>
+					<p>We strive on working with others so, this year we will be providing for our clients the opportunity to shoot future videos on the ever-so popular, RED "Epic" film camera.</p>
 				</div>
 				<div class="nrm">
 					<h2>Equipment</h2>
@@ -274,7 +274,7 @@
 	<footer>
 		<div class="container">
 			<div id="copyright">
-				&copy; Copyright 2014 That One Studio
+				&copy; Copyright 2014 | That ONE Studio LLC
 			</div>
 			<div id="social">
 				<ul>

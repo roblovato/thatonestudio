@@ -179,7 +179,7 @@ switch($action){
                 "video_type"=>"yt",
                 "category"=>"weddings",
                 "sub_category"=>"",
-                "featured"=>"false");
+                "featured"=>"true");
         $vids[] = array("id"=>"26",
                 "title"=>"‪Yasmine & Mustafa Highlight",
                 "video_id"=>"38702821",
@@ -214,7 +214,7 @@ switch($action){
                 "video_type"=>"vimeo",
                 "category"=>"weddings",
                 "sub_category"=>"",
-                "featured"=>"true");
+                "featured"=>"false");
         $vids[] = array("id"=>"31",
                 "title"=>"‪Katie & Rich",
                 "video_id"=>"82867245",
