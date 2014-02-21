@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$( document ).on( "focus", "#contact_form", function() {
 	$("#contact_form").validate({
 		rules:{
 			first_name : "required",
