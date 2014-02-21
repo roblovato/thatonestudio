@@ -216,6 +216,7 @@
 							<input type="submit" name="submit" value="Submit">
 						</div>
 					</form>
+					<div id="thankyou" style="display:none;">Thank you for contacting us</div>
 				</div>
 			</div>
 		</script>
@@ -335,6 +336,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script src="js/ko.js"></script>
 	<script src="js/scripts.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/contact.js"></script>
 	<script src="js/less.js"></script>
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
