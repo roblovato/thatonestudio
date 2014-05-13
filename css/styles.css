@@ -62,6 +62,11 @@ h3 {
   margin-top: 0;
   font-weight: normal;
 }
+h1 {
+  font-size: 38px;
+  text-align: center;
+  font-family: 'source_sans_prolight', Arial, Helvetica, sans-serif;
+}
 h2 {
   border-bottom: 1px solid #eeeeef;
   margin-bottom: 20px;
@@ -69,10 +74,20 @@ h2 {
   font-size: 28px;
   font-family: 'source_sans_prolight', Arial, Helvetica, sans-serif;
 }
+h3 {
+  font-size: 18px;
+  font-family: 'source_sans_prolight', Arial, Helvetica, sans-serif;
+}
+p {
+  line-height: 25px;
+}
 ul {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+#page_wrap {
+  position: relative;
 }
 .container {
   width: 978px;
@@ -84,6 +99,20 @@ ul {
   height: 0;
   clear: both;
   visibility: hidden;
+}
+.container.moveleft {
+  left: -100%;
+}
+.container.moveright {
+  left: 100%;
+}
+.box {
+  position: relative;
+  left: 0;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
 header {
   height: 120px;
@@ -137,6 +166,9 @@ header nav li em {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+header nav li em.active {
+  opacity: 1;
+}
 header nav li:hover em {
   opacity: 1;
 }
@@ -170,17 +202,24 @@ header nav li ul li button:hover {
   text-align: center;
   margin-bottom: 60px;
 }
+#feature .video_wrap {
+  width: 100%;
+}
 #latest {
   margin-bottom: 60px;
 }
-#latest #carousel {
+.grid {
   text-align: center;
 }
-#latest #carousel > div {
+.grid > div {
+  position: relative;
   display: inline-block;
-  margin: 0 20px;
+  margin: 0 5px;
 }
-#latest #carousel > div > button {
+.grid > div.sub {
+  margin-bottom: 20px;
+}
+.grid > div > button {
   position: relative;
   overflow: hidden;
   padding: 0;
@@ -189,16 +228,19 @@ header nav li ul li button:hover {
   border: 5px solid #fff;
   box-shadow: 0 0 20px #e5e5e5;
 }
-#latest #carousel > div > button:hover {
+.grid > div > button.edit {
+  border-color: red;
+}
+.grid > div > button:hover {
   cursor: pointer;
 }
-#latest #carousel > div > button:hover span {
+.grid > div > button:hover span {
   opacity: 0;
 }
-#latest #carousel > div > button:hover em {
+.grid > div > button:hover em {
   bottom: 0;
 }
-#latest #carousel > div > button span {
+.grid > div > button span {
   position: absolute;
   top: 0;
   display: block;
@@ -211,7 +253,7 @@ header nav li ul li button:hover {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-#latest #carousel > div > button em {
+.grid > div > button em {
   position: absolute;
   bottom: -25px;
   display: block;
@@ -226,22 +268,22 @@ header nav li ul li button:hover {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-#latest #carousel > div > button img {
-  width: 230px;
+.grid > div > button img {
+  width: 300px;
 }
-#columns {
+.columns {
   margin-bottom: 60px;
 }
-#columns > div {
+.columns.move {
+  left: 100%;
+}
+.columns > div {
   width: 306px;
   float: left;
   margin-right: 30px;
 }
-#columns > div.nrm {
+.columns > div.nrm {
   margin-right: 0;
-}
-#columns > div p {
-  line-height: 25px;
 }
 footer {
   height: 240px;
@@ -299,8 +341,101 @@ footer .container #social ul li a#youtube {
 footer .container #social ul li a#vimeo {
   background-position: 0 -60px;
 }
+/*===================== MULTIMEDIA =====================*/
+#multimedia {
+  text-align: center;
+  margin-bottom: 60px;
+}
+/*===================== WEDDINGS =====================*/
+#weddings .grid {
+  margin-bottom: 60px;
+}
+#weddings p {
+  margin-bottom: 60px;
+}
+/*===================== ABOUT =====================*/
+#about p {
+  margin-bottom: 60px;
+}
+/*===================== PRODUCTION =====================*/
+#production section {
+  margin-bottom: 60px;
+}
+#production section:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/*===================== CONTACT =====================*/
+#contact #contact_left,
+#contact #contact_right {
+  width: 50%;
+  float: left;
+}
+#contact #contact_left {
+  margin-bottom: 60px;
+}
+#contact .iwrap {
+  padding: 0 30px;
+  margin-bottom: 20px;
+}
+#contact .iwrap:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#contact .iwrap label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+#contact .iwrap label.error {
+  float: right;
+  color: red;
+  font-size: 12px;
+  font-style: italic;
+}
+#contact .iwrap input[type="text"],
+#contact .iwrap textarea {
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #eeeeef;
+  font-size: 20px;
+  font-family: 'source_sans_prolight', Arial, Helvetica, sans-serif;
+}
+#contact .iwrap textarea {
+  height: 120px;
+}
+#contact input[type="submit"] {
+  float: right;
+  margin: 20px 20px 0 0;
+  padding: 10px;
+  background: #eeeeef;
+  border: 1px solid #a0a0a0;
+  font-size: 20px;
+  font-family: 'source_sans_prolight', Arial, Helvetica, sans-serif;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#contact input[type="submit"]:hover {
+  cursor: pointer;
+  background: #3b3767;
+  color: #fff;
+}
+#thankyou {
+  padding: 100px 0;
+  text-align: center;
+  font-size: 26px;
+}
 /*===================== MODAL WINDOW =====================*/
-#overlay {
+.overlay,
+#page_overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -308,6 +443,16 @@ footer .container #social ul li a#vimeo {
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   z-index: 20000;
+}
+#page_overlay {
+  position: absolute;
+  background: #fff;
+}
+#page_overlay img {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  margin-left: -100px;
 }
 #modal {
   position: fixed;
@@ -347,13 +492,52 @@ footer .container #social ul li a#vimeo {
 .modal_content {
   display: none;
 }
+.edit_options {
+  width: 230px;
+  padding: 20px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -135px;
+  margin-top: -85px;
+  background: #fff;
+  box-shadow: 0 0 10px #000;
+  text-align: left;
+  z-index: 30000;
+}
+.edit_options .button_row {
+  margin-bottom: 10px;
+}
+.edit_options .iwrap {
+  margin-bottom: 10px;
+}
+.edit_options .iwrap label {
+  display: inline-block;
+  width: 75px;
+}
+.edit_options .iwrap input[type="text"] {
+  width: 125px;
+  font-size: 14px;
+}
+.edit_options .iwrap input[type="text"]:disabled {
+  border: 2px solid transparent;
+}
 /*-------------------------------------- TABLETS --------------------------------------*/
 @media (min-width: 481px) and (max-width: 978px) {
   .container {
     width: auto;
     padding: 0 20px;
   }
-  #columns > div {
+  .grid > div {
+    width: 30%;
+  }
+  .grid > div > button {
+    width: 100%;
+  }
+  .grid > div > button img {
+    width: 100%;
+  }
+  .columns > div {
     width: 30%;
   }
   header nav {
@@ -439,11 +623,18 @@ footer .container #social ul li a#vimeo {
   #latest {
     padding: 0 20px;
   }
-  #latest #carousel > div {
+  .grid > div {
+    width: 100%;
     display: inline-block;
-    margin: 0 20px 20px 20px;
+    margin: 0 0 20px 0;
   }
-  #columns > div {
+  .grid > div > button {
+    width: 100%;
+  }
+  .grid > div > button img {
+    width: 100%;
+  }
+  .columns > div {
     width: auto;
     margin: 0 0 30px 0;
     padding: 0 20px;
@@ -451,6 +642,20 @@ footer .container #social ul li a#vimeo {
   #modal #modal_content iframe {
     width: 250px;
     height: 140px;
+  }
+  #page_overlay img {
+    top: 50px;
+  }
+  #contact #contact_left,
+  #contact #contact_right {
+    width: 100%;
+    float: left;
+  }
+  #contact #contact_left {
+    margin-bottom: 0;
+  }
+  #contact #contact_right {
+    margin-bottom: 60px;
   }
   footer .container #copyright {
     float: none;

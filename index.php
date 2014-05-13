@@ -70,7 +70,7 @@
 				<p>Though we've been filming for years on our own, That ONE Studio began in October 2011. Since then, we've been filming weddings, short narrative pieces, music videos, and various other projects.</p>
 				<h2>Where are we based?</h2>
 				<p>We are based out of the Bay Area and serve it with a smile! And laughter!</p>
-				<h2>Why do we do this</h2>
+				<h2>Why do we do this?</h2>
 				<p>Love & Passion.<br />
 					Film is the type of work we are always willing to lose sleep over, all to bring joy and excitement to whomever was waiting for the video.</p>
 			</div>
@@ -249,7 +249,7 @@
 			<div class="columns container box" data-bind="css: {moveleft: beGone}">
 				<div>
 					<h2>Who We Are</h2>
-					<p>Here at That ONE Studio, we not only want to make an impression on our clients but also our community. Starting this year, every video that we produce, we will donate a portion of the proceeds to a local charity on behave of our customers and the T.O.S. family.</p>
+					<p>Here at That ONE Studio, we not only want to make an impression on our clients but also our community. Starting this year, every video that we produce, we will donate a portion of the proceeds to a local charity on behalf of our customers and the T.O.S. family.</p>
 				</div>
 				<div>
 					<h2>Video Production</h2>
