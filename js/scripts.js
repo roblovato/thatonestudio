@@ -86,10 +86,17 @@ $(document).ready(function(){
 					$.each(data.videos, function(i,v){
 						self.videos.push(new Video(v));
 					});
+					self.sortVideos();
 				} else {
 					//fuck no, this isn't optional
 				}
 			},'json');
+		};
+
+		this.sortVideos = function () {
+			self.videos.sort(function (a, b) {
+				return b.id() - a.id();
+			});
 		};
 
 		self.addVideo = function() {

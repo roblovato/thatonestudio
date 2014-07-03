@@ -180,6 +180,18 @@
 						</div>
 					</div>
 				</section>
+				<section>
+					<h2>Manicurist/Nail Technician</h2>
+					<div class="columns">
+						<div>
+							<h3>Nhi "Kat" Le</h3>
+							<p>
+								Web: <a href="http://www.glamhermobilenails.com" target="_blank">glamhermobilenails.com</a><br />
+								Email: <a href="mailto:glamhermobilenails@gmail.com">glamhermobilenails@gmail.com</a>
+							</p>
+						</div>
+					</div>
+				</section>
 			</div>
 		</script>
 
@@ -224,7 +236,7 @@
 		<script type="text/html" id="home_template">
 			<div id="feature" class="container box" data-bind="css: {moveleft: beGone}">
 				<div class="video_wrap">
-					<iframe id="featured_video" width="" height="" src="//player.vimeo.com/video/82867245" frameborder="0" allowfullscreen></iframe>
+					<iframe id="featured_video" width="" height="" src="//player.vimeo.com/video/92975014" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div> <!-- /#feature-->
 			<div id="latest" class="container box" data-bind="css: {moveright: beGone}">

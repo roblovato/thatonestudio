@@ -88,6 +88,7 @@ ul {
 }
 #page_wrap {
   position: relative;
+  overflow: hidden;
 }
 .container {
   width: 978px;

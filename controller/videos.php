@@ -174,12 +174,12 @@ switch($action){
                 "sub_category"=>"",
                 "featured"=>"false");
         $vids[] = array("id"=>"25",
-                "title"=>"‪Arianna\'s Quinceanera Highlight",
+                "title"=>"‪Arianna's Quinceanera Highlight",
                 "video_id"=>"d3_1PihzKMg",
                 "video_type"=>"yt",
                 "category"=>"weddings",
                 "sub_category"=>"",
-                "featured"=>"true");
+                "featured"=>"false");
         $vids[] = array("id"=>"26",
                 "title"=>"‪Yasmine & Mustafa Highlight",
                 "video_id"=>"38702821",
@@ -225,6 +225,27 @@ switch($action){
         $vids[] = array("id"=>"32",
                 "title"=>"‪Sean & April",
                 "video_id"=>"82323989",
+                "video_type"=>"vimeo",
+                "category"=>"weddings",
+                "sub_category"=>"",
+                "featured"=>"false");
+        $vids[] = array("id"=>"33",
+                "title"=>"‪Crossfit Danville",
+                "video_id"=>"z-dPlUzVgRk",
+                "video_type"=>"yt",
+                "category"=>"multimedia",
+                "sub_category"=>"commercial_promo",
+                "featured"=>"true");
+        $vids[] = array("id"=>"34",
+                "title"=>"Beth & Alex",
+                "video_id"=>"96268247",
+                "video_type"=>"vimeo",
+                "category"=>"weddings",
+                "sub_category"=>"",
+                "featured"=>"false");
+        $vids[] = array("id"=>"34",
+                "title"=>"Christy & Zach",
+                "video_id"=>"92975014",
                 "video_type"=>"vimeo",
                 "category"=>"weddings",
                 "sub_category"=>"",
