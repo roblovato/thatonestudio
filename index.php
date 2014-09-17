@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id="main">
-<button style="position:fixed; top:100px; left:100px; z-index:99999;" data-bind="click: editToggle">Edit Mode</button>
+<!-- <button style="position:fixed; top:100px; left:100px; z-index:99999;" data-bind="click: editToggle">Edit Mode</button> -->
 	<header>
 		<div class="container">
 			<a href="#" id="logo" data-bind="click: function(){ nav('home') }">

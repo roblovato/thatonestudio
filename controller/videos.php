@@ -255,14 +255,14 @@ switch($action){
                 "video_id"=>"NU5ufELtUCk",
                 "video_type"=>"yt",
                 "category"=>"multimedia",
-                "sub_category"=>"commercial_promo",
+                "sub_category"=>"trailer_teaser",
                 "featured"=>"true");
         $vids[] = array("id"=>"36",
                 "title"=>"‪Abyss Vapor Lounge Teaser",
                 "video_id"=>"_HqJjYWiqio",
                 "video_type"=>"yt",
                 "category"=>"multimedia",
-                "sub_category"=>"commercial_promo",
+                "sub_category"=>"trailer_teaser",
                 "featured"=>"true");
         $vids[] = array("id"=>"37",
                 "title"=>"Mimi & Paul",

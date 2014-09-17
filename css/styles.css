@@ -27,15 +27,15 @@ img {
   vertical-align: middle;
 }
 a:link {
-  color: #3b3767;
+  color: #767878;
   text-decoration: none;
 }
 a:visited {
-  color: #3b3767;
+  color: #767878;
   text-decoration: none;
 }
 a:hover {
-  color: #3b3767;
+  color: #767878;
   text-decoration: underline;
 }
 button::-moz-focus-inner {
@@ -148,7 +148,7 @@ header nav li button {
   display: inline-block;
   padding: 0 20px !important;
   font-size: 18px;
-  color: #3b3767;
+  color: #767878;
   font-family: 'source_sans_prosemibold', Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
@@ -160,7 +160,7 @@ header nav li em {
   bottom: 0;
   left: 50%;
   margin-left: -25px;
-  background: #3b3767;
+  background: #767878;
   opacity: 0;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -298,7 +298,7 @@ footer .container {
 }
 footer .container #copyright {
   float: left;
-  color: #3b3767;
+  color: #767878;
 }
 footer .container #social {
   float: right;
@@ -429,7 +429,7 @@ footer .container #social ul li a#instagram {
 }
 #contact input[type="submit"]:hover {
   cursor: pointer;
-  background: #3b3767;
+  background: #767878;
   color: #fff;
 }
 #thankyou {
