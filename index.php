@@ -236,7 +236,7 @@
 		<script type="text/html" id="home_template">
 			<div id="feature" class="container box" data-bind="css: {moveleft: beGone}">
 				<div class="video_wrap">
-					<iframe id="featured_video" width="" height="" src="//player.vimeo.com/video/92975014" frameborder="0" allowfullscreen></iframe>
+					<iframe id="featured_video" width="" height="" src="//player.vimeo.com/video/104987555" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div> <!-- /#feature-->
 			<div id="latest" class="container box" data-bind="css: {moveright: beGone}">
@@ -295,6 +295,7 @@
 					<li><a href="https://twitter.com/ThatONEStudio" target="_blank" id="twitter">Twitter</a></li>
 					<li><a href="http://www.youtube.com/user/THAT1STUDIO" target="_blank" id="youtube">YouTube</a></li>
 					<li><a href="https://vimeo.com/user9048137" target="_blank" id="vimeo">Vimeo</a></li>
+					<li><a href="http://instagram.com/that1studiopro" target="_blank" id="instagram">Instagram</a></li>
 				</ul>
 			</div>
 		</div>

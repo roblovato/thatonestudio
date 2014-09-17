@@ -32,7 +32,7 @@ switch($action){
                 "video_type"=>"yt",
                 "category"=>"multimedia",
                 "sub_category"=>"music_videos",
-                "featured"=>"true");
+                "featured"=>"false");
         $vids[] = array("id"=>"05",
                 "title"=>"‪Sircut - LEAN music video",
                 "video_id"=>"iuRWs4m8aSM",
@@ -53,7 +53,7 @@ switch($action){
                 "video_type"=>"yt",
                 "category"=>"multimedia",
                 "sub_category"=>"commercial_promo",
-                "featured"=>"true");
+                "featured"=>"false");
         $vids[] = array("id"=>"08",
                 "title"=>"‪2012 NYE Party at Blackhawk Museum",
                 "video_id"=>"K-E0GRpd7rI",
@@ -246,6 +246,27 @@ switch($action){
         $vids[] = array("id"=>"34",
                 "title"=>"Christy & Zach",
                 "video_id"=>"92975014",
+                "video_type"=>"vimeo",
+                "category"=>"weddings",
+                "sub_category"=>"",
+                "featured"=>"false");
+        $vids[] = array("id"=>"35",
+                "title"=>"‪Vanity Dance Company Trailer",
+                "video_id"=>"NU5ufELtUCk",
+                "video_type"=>"yt",
+                "category"=>"multimedia",
+                "sub_category"=>"commercial_promo",
+                "featured"=>"true");
+        $vids[] = array("id"=>"36",
+                "title"=>"‪Abyss Vapor Lounge Teaser",
+                "video_id"=>"_HqJjYWiqio",
+                "video_type"=>"yt",
+                "category"=>"multimedia",
+                "sub_category"=>"commercial_promo",
+                "featured"=>"true");
+        $vids[] = array("id"=>"37",
+                "title"=>"Mimi & Paul",
+                "video_id"=>"104987555",
                 "video_type"=>"vimeo",
                 "category"=>"weddings",
                 "sub_category"=>"",

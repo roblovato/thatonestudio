@@ -342,6 +342,9 @@ footer .container #social ul li a#youtube {
 footer .container #social ul li a#vimeo {
   background-position: 0 -60px;
 }
+footer .container #social ul li a#instagram {
+  background-position: 0 -80px;
+}
 /*===================== MULTIMEDIA =====================*/
 #multimedia {
   text-align: center;
